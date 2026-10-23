@@ -32,6 +32,13 @@ h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:900;margin-bottom:14px}
 .foto{border-radius:22px;display:flex;align-items:flex-end;padding:16px;font-size:.8rem;font-weight:500;color:#f7efe2;background:linear-gradient(150deg,rgba(233,30,140,.9),rgba(247,239,226,.9) 55%,rgba(181,232,67,.85));border:1px solid var(--borda);position:relative;overflow:hidden}
 .foto span{background:rgba(18,18,18,.75);padding:4px 12px;border-radius:999px}
 /* MENU */
+#cookies{position:fixed;left:16px;bottom:16px;z-index:70;max-width:380px;padding:16px 18px;border-radius:18px;background:#1c1820;color:#f7efe2;font-size:.86rem;line-height:1.5;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+#cookies[hidden]{display:none}
+#cookies p{margin:0 0 12px}
+#cookies div{display:flex;gap:10px}
+#cookies button{font:inherit;font-weight:600;font-size:.82rem;padding:9px 16px;border-radius:999px;border:1px solid rgba(247,239,226,.4);background:none;color:#f7efe2;cursor:pointer}
+#cookies button.sim{background:var(--lima);border-color:var(--lima);color:#1c1820}
+@media(max-width:520px){#cookies{left:12px;right:12px;bottom:12px;max-width:none}}
 #faixa{position:fixed;top:0;left:0;right:0;height:var(--faixa);z-index:60;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 14px;background:#1c1820;color:#f7efe2;font-size:.88rem;white-space:nowrap;overflow:hidden}
 #faixa[hidden]{display:none}
 #faixa .tag{background:var(--rosa);color:#fff;font-family:Montserrat,sans-serif;font-weight:900;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
@@ -185,6 +192,11 @@ section{padding:48px 0}
   <b id="faixaDias">Faltam 35 dias</b>
   <span class="txt">Estou abrindo a agenda de novembro.</span>
   <a href="https://wa.me/5511992147238?text=Oi%20Renata%21%20Quero%20reservar%20a%20agenda%20da%20Black%20Friday." target="_blank" rel="noopener">reservar agenda &rarr;</a>
+</div>
+
+<div id="cookies" role="dialog" aria-label="Aviso de cookies" hidden>
+  <p>Uso cookies para entender como o site é visto e melhorar a sua experiência. Você aceita?</p>
+  <div><button class="sim" type="button" id="cookSim">Aceitar</button><button type="button" id="cookNao">Recusar</button></div>
 </div>
 
 <header>
@@ -371,28 +383,28 @@ const minis = [
 /* Trabalhos. "wide:true" deixa o card retangular (horizontal), para vídeos gravados na horizontal. "pos" (opcional) ajusta o enquadramento da capa: "center top" mostra mais a parte de cima, "center bottom" a de baixo. nicho deve ser igual a um dos nichos abaixo (use uma lista para mais de um, ex.: ["moda","experiência"]). img = caminho da imagem (opcional) */
 const nichos = ["beleza","moda","fitness","experiência","casa e decoração","tech","skincare","viagem"];
 const trabalhos = [
-  {nicho:"beleza", titulo:"Taiff - Passo a passo", img:"capas/cabelo.jpg", video:"videos/cabelo.mp4"},
-  {nicho:"beleza", titulo:"Eudora - lançamento Ultra bond reset", img:"capas/cabelo-2.jpg", video:"videos/cabelo-2.mp4"},
-  {nicho:"beleza", titulo:"RubyRose - Gel Sobrancelha", img:"capas/gel-sobrancelha.jpg", video:"videos/gel-sobrancelha.mp4"},
-  {nicho:["beleza","experiência"], titulo:"Massagem relaxante", img:"capas/massagem.jpg", video:"videos/massagem.mp4"},
-  {nicho:["skincare","experiência"], titulo:"Limpeza de pele", img:"capas/limpeza-de-pele.jpg", video:"videos/limpeza-de-pele.mp4"},
-  {nicho:["moda","experiência"], titulo:"Vestido de Noiva", img:"capas/vestido-de-noiva.jpg", video:"videos/vestido-de-noiva.mp4"},
-  {nicho:"moda", titulo:"Conjunto Império da Moda", pos:"center top", img:"capas/roupa.jpg", video:"videos/roupa.mp4"},
-  {nicho:"moda", titulo:"Bolsa Jorge Bischoff", img:"capas/unboxing-bolsa.jpg", video:"videos/unboxing-bolsa.mp4"},
-  {nicho:"casa e decoração", titulo:"CIF - Limpador multiuso", pos:"center top", img:"capas/limpeza.jpg", video:"videos/limpeza.mp4"},
-  {nicho:"casa e decoração", titulo:"CIF - Lava louça", img:"capas/limpeza-2.jpg", video:"videos/limpeza-2.mp4"},
-  {nicho:"fitness", titulo:"Whey Protein Growth", img:"capas/fitness.jpg", video:"videos/fitness.mp4"},
-  {nicho:"fitness", titulo:"Vouq: Moda Fitness", img:"capas/roupa-fitness.jpg", video:"videos/roupa-fitness.mp4"},
-  {nicho:"fitness", titulo:"Movie: Moda Fitness", pos:"center top", img:"capas/roupa-fitness-2.jpg", video:"videos/roupa-fitness-2.mp4"},
-  {nicho:"fitness", titulo:"Movie: Moda Fitness", img:"capas/roupa-fitness-3.jpg", video:"videos/roupa-fitness-3.mp4"},
-  {nicho:"beleza", titulo:"Vizella Cosméticos - Blush", img:"capas/novo-1.jpg", video:"videos/novo-1.mp4"},
-  {nicho:"beleza", titulo:"Dove - Antitranspirante Aerosol", img:"capas/novo-3.jpg", video:"videos/novo-3.mp4"},
-  {nicho:"beleza", titulo:"Taiff - Antes e depois", img:"capas/novo-4.jpg", video:"videos/novo-4.mp4"},
-  {nicho:"moda", titulo:"Robes personalizados longo", img:"capas/robe-longo.jpg", video:"videos/novo-5.mp4"},
-  {nicho:"moda", titulo:"Robes personalizados curto", img:"capas/robe-curto.jpg", video:"videos/novo-6.mp4"},
-  {nicho:"tech", titulo:"Stake - Academy", wide:true, img:"capas/tech-1.jpg", video:"videos/tech-1.mp4"},
-  {nicho:"tech", titulo:"Stake - Como abrir sua conta", wide:true, img:"capas/tech-2.jpg", video:"videos/tech-2.mp4"},
-  {nicho:"tech", titulo:"Microfone de lapela", pos:"center 12%", img:"capas/tech-3.jpg", video:"videos/tech-3.mp4"}
+  {nicho:"beleza", titulo:"Taiff - Passo a passo", img:"capas/cabelo.jpg", video:"cabelo.mp4"},
+  {nicho:"beleza", titulo:"Eudora - lançamento Ultra bond reset", img:"capas/cabelo-2.jpg", video:"cabelo-2.mp4"},
+  {nicho:"beleza", titulo:"RubyRose - Gel Sobrancelha", img:"capas/gel-sobrancelha.jpg", video:"gel-sobrancelha.mp4"},
+  {nicho:["beleza","experiência"], titulo:"Massagem relaxante", img:"capas/massagem.jpg", video:"massagem.mp4"},
+  {nicho:["skincare","experiência"], titulo:"Limpeza de pele", img:"capas/limpeza-de-pele.jpg", video:"limpeza-de-pele.mp4"},
+  {nicho:["moda","experiência"], titulo:"Vestido de Noiva", img:"capas/vestido-de-noiva.jpg", video:"vestido-de-noiva.mp4"},
+  {nicho:"moda", titulo:"Conjunto Império da Moda", pos:"center top", img:"capas/roupa.jpg", video:"roupa.mp4"},
+  {nicho:"moda", titulo:"Bolsa Jorge Bischoff", img:"capas/unboxing-bolsa.jpg", video:"unboxing-bolsa.mp4"},
+  {nicho:"casa e decoração", titulo:"CIF - Limpador multiuso", pos:"center top", img:"capas/limpeza.jpg", video:"limpeza.mp4"},
+  {nicho:"casa e decoração", titulo:"CIF - Lava louça", img:"capas/limpeza-2.jpg", video:"limpeza-2.mp4"},
+  {nicho:"fitness", titulo:"Whey Protein Growth", img:"capas/fitness.jpg", video:"fitness.mp4"},
+  {nicho:"fitness", titulo:"Vouq: Moda Fitness", img:"capas/roupa-fitness.jpg", video:"roupa-fitness.mp4"},
+  {nicho:"fitness", titulo:"Movie: Moda Fitness", pos:"center top", img:"capas/roupa-fitness-2.jpg", video:"roupa-fitness-2.mp4"},
+  {nicho:"fitness", titulo:"Movie: Moda Fitness", img:"capas/roupa-fitness-3.jpg", video:"roupa-fitness-3.mp4"},
+  {nicho:"beleza", titulo:"Vizella Cosméticos - Blush", img:"capas/novo-1.jpg", video:"novo-1.mp4"},
+  {nicho:"beleza", titulo:"Dove - Antitranspirante Aerosol", img:"capas/novo-3.jpg", video:"novo-3.mp4"},
+  {nicho:"beleza", titulo:"Taiff - Antes e depois", img:"capas/novo-4.jpg", video:"novo-4.mp4"},
+  {nicho:"moda", titulo:"Robes personalizados longo", img:"capas/robe-longo.jpg", video:"novo-5.mp4"},
+  {nicho:"moda", titulo:"Robes personalizados curto", img:"capas/robe-curto.jpg", video:"novo-6.mp4"},
+  {nicho:"tech", titulo:"Stake - Academy", wide:true, img:"capas/tech-1.jpg", video:"tech-1.mp4"},
+  {nicho:"tech", titulo:"Stake - Como abrir sua conta", wide:true, img:"capas/tech-2.jpg", video:"tech-2.mp4"},
+  {nicho:"tech", titulo:"Microfone de lapela", pos:"center 12%", img:"capas/tech-3.jpg", video:"tech-3.mp4"}
 ];
 
 /* Sessão de fotos. src = caminho da imagem, alt = descrição curta da foto */
@@ -532,6 +544,23 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",
     window.scrollTo({top:alvo.getBoundingClientRect().top+scrollY-(76+f),behavior:"smooth"});};
   ir();setTimeout(ir,700);setTimeout(ir,1400);
 }));
+
+/* Estatisticas de visita (Microsoft Clarity): so carrega depois que a pessoa aceita os cookies */
+(function(){
+  const box=$("#cookies");let esc=null;
+  try{esc=localStorage.getItem("cookies")}catch(_){}
+  function clarity(){
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","z2efqjq43o");
+  }
+  function guardar(v){try{localStorage.setItem("cookies",v)}catch(_){}}
+  if(esc==="sim"){clarity();}
+  else if(esc!=="nao"){box.hidden=false;}
+  $("#cookSim").onclick=()=>{guardar("sim");box.hidden=true;clarity();};
+  $("#cookNao").onclick=()=>{guardar("nao");box.hidden=true;};
+})();
 
 /* Faixa Black Friday: conta os dias sozinha e some depois da data */
 (function(){
