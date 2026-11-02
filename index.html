@@ -536,7 +536,7 @@ gal.addEventListener("click",e=>{const b=e.target.closest(".foto");if(!b)return;
 
 
 /* Videos em destaque: titulos exatos dos videos de "trabalhos" que aparecem na secao */
-const destaques = ["Eudora - lançamento Ultra bond reset","Keeta: Delivery de comida","Nicephotos: Fotos reveladas","Whey Protein Growth"];
+const destaques = ["Eudora - lançamento Ultra bond reset","Nicephotos: Fotos reveladas","Keeta: Delivery de comida","Whey Protein Growth"];
 const dg = $("#destGal");
 dg.innerHTML = destaques.map(n=>trabalhos.find(t=>t.titulo===n)).filter(Boolean).map(t=>`
 <button type="button" class="foto pol" data-wide="" data-video="${t.video||""}" data-ig="${t.ig||""}" aria-label="Assistir: ${t.titulo}">
