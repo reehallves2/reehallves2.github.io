@@ -193,7 +193,7 @@ section{padding:48px 0}
 @media (max-width:640px){.mosaico,.mosaico .col{gap:8px}}
 @media (max-width:480px){.galeria{grid-template-columns:repeat(2,1fr);gap:10px}.galeria .foto{padding:10px}.galeria strong{font-size:.82rem}.galeria .foto span{font-size:.7rem;padding:3px 9px}.galeria .foto::before{width:30px;height:30px;top:8px;right:8px}.minis{gap:8px}.mini b{font-size:1.3rem}}
 
-/* POLAROID: cards de video no estilo foto instantanea. Para voltar ao visual anterior, apague este bloco e tire a classe "pol" dos dois templates no script */
+/* POLAROID: usado so nos videos em destaque (#destGal) */
 .galeria .foto.pol{background:#fffdf8;border:0;border-radius:4px;padding:10px 10px 14px;flex-direction:column;align-items:stretch;justify-content:flex-start;aspect-ratio:auto;gap:8px;box-shadow:0 8px 22px rgba(40,25,10,.2);transform:rotate(var(--r,0deg));transition:transform .25s,box-shadow .25s;overflow:visible}
 .galeria .foto.pol:nth-child(4n+1){--r:-2deg}
 .galeria .foto.pol:nth-child(4n+2){--r:1.5deg}
@@ -529,8 +529,8 @@ const filtros = $("#filtros"), gal = $("#galeria");
 });
 gal.innerHTML = trabalhos.map(t=>`
 <!-- Para trocar: edite "img" (capa) e "video" (arquivo) no array trabalhos -->
-<button type="button" class="foto pol${t.img?"":" semcapa"}${t.wide?" wide":""}" data-nicho="${[].concat(t.nicho).join("|")}" data-wide="${t.wide?1:""}" data-video="${t.video||""}" data-ig="${t.ig||""}" aria-label="Assistir: ${t.titulo}" >
-  <i class="pi"${t.img?` style="background-image:url('${M(t.img)}');background-position:${t.pos||"center"}"`:""}></i><strong>${t.titulo}</strong>${(t.nicho.length||t.ig)?`<span>${[].concat(t.nicho).join(", ")||"Instagram"}</span>`:""}
+<button type="button" class="foto${t.img?"":" semcapa"}${t.wide?" wide":""}" data-nicho="${[].concat(t.nicho).join("|")}" data-wide="${t.wide?1:""}" data-video="${t.video||""}" data-ig="${t.ig||""}" aria-label="Assistir: ${t.titulo}" ${t.img?`style="background:linear-gradient(180deg,transparent 50%,rgba(18,18,18,.85)),url('${M(t.img)}') ${t.pos||"center"}/cover"`:""}>
+  <strong>${t.titulo}</strong>${(t.nicho.length||t.ig)?`<span>${[].concat(t.nicho).join(", ")||"Instagram"}</span>`:""}
 </button>`).join("");
 gal.addEventListener("click",e=>{const b=e.target.closest(".foto");if(!b)return;b.dataset.ig?abrirReel(b.dataset.ig):abrirVideo(b.dataset.video,b.dataset.wide);});
 
