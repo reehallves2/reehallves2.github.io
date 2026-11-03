@@ -140,10 +140,15 @@ button.foto{font:inherit;text-align:left;cursor:pointer;width:100%}
 .res{padding:26px;border-left:4px solid var(--rosa)}
 .res b{font:900 2rem Montserrat,sans-serif;color:var(--rosa)}
 .dep-g{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.dep{padding:26px}
-.dep blockquote{margin-bottom:16px}
-.dep cite{font-style:normal;font-weight:600;color:var(--txt)}
-.dep small{display:block;opacity:.7}
+.dep-g:has(.dep:only-child){grid-template-columns:minmax(0,680px)}
+.dep{padding:30px 28px 26px;position:relative;overflow:hidden}
+.dep .aspas{display:block;font:900 5.2rem/.7 Georgia,"Times New Roman",serif;color:var(--rosa);margin-bottom:6px;height:2.6rem}
+.dep blockquote{margin-bottom:20px;font-size:1.05rem;line-height:1.6}
+.dep figcaption{display:flex;align-items:center;gap:14px}
+.dep .av{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--borda);display:grid;place-items:center;overflow:hidden;font:900 1.1rem Montserrat,sans-serif;color:var(--rosa)}
+.dep .av img{width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box}
+.dep cite{display:block;font-style:normal;font:700 1rem Montserrat,sans-serif;color:var(--txt)}
+.dep small{display:inline-block;margin-top:4px;opacity:1;font:600 .78rem Poppins,sans-serif;color:#121212;background:var(--lima);padding:2px 10px;border-radius:999px;text-transform:capitalize}
 /* CONTATO */
 .contato-g{display:grid;grid-template-columns:1fr;max-width:480px;margin:0 auto;gap:40px}
 form{padding:30px;display:grid;gap:16px}
@@ -236,7 +241,7 @@ section{padding:48px 0}
         <li><a href="#trabalhos">Trabalhos</a></li>
         <li><a href="#fotos">Fotos</a></li>
         <li><a href="#servicos">Serviços</a></li>
-        <!-- <li><a href="#numeros">Números</a></li> -->
+        <li><a href="#numeros">Feedbacks</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
@@ -322,13 +327,13 @@ section{padding:48px 0}
 </section>
 
 <!-- 6. NÚMEROS E DEPOIMENTOS -->
-<!-- OCULTO por enquanto. Para mostrar de novo: apague o atributo hidden desta linha e o hidden do bloco dos três números na capa, e tire os comentários do link "Números" no menu. -->
-<section id="numeros" hidden>
+<!-- Numeros e resultados ficam ocultos (hidden) ate ter dados reais. Para mostrar: tire o hidden dos blocos #metricas e #res abaixo. -->
+<section id="numeros">
   <div class="wrap">
-    <h2 class="rev">Números e depoimentos</h2>
-    <p class="sub rev">O que os conteúdos entregam e o que as marcas dizem sobre trabalhar comigo.</p>
-    <div class="metricas" id="metricas"></div>
-    <div class="res-g" id="res"></div>
+    <h2 class="rev">O que as marcas dizem</h2>
+    <p class="sub rev">Feedback de quem já trabalhou comigo.</p>
+    <div class="metricas" id="metricas" hidden></div>
+    <div class="res-g" id="res" hidden></div>
     <div class="dep-g" id="dep"></div>
   </div>
 </section>
@@ -498,11 +503,9 @@ const resultados = [
 ];
 
 /* Depoimentos */
-const depoimentos = [
-  {q:"Escreva aqui o depoimento do cliente.", nome:"Cliente 01", emp:"Empresa 01"},
-  {q:"Escreva aqui o depoimento do cliente.", nome:"Cliente 02", emp:"Empresa 02"},
-  {q:"Escreva aqui o depoimento do cliente.", nome:"Cliente 03", emp:"Empresa 03"},
-  {q:"Escreva aqui o depoimento do cliente.", nome:"Cliente 04", emp:"Empresa 04"}
+const depoimentos = [  /* logo: caminho do logo da marca (ex: "logos/keeta.png"), pode ficar vazio. nicho: ex "beleza" */
+  {q:"Lindo Ree, amei tudo. Ficou lindo, parabéns. Dá até gosto a gente fechar parceria com alguém que faz vídeos legal, sabe?", nome:"", emp:"JB Robes Personalizados", nicho:"moda", logo:"logos/jb-robes.png"},
+  {q:"Ficou muito bom! Parabéns, ficou TOP!", nome:"", emp:"WP Lab", nicho:"fitness", logo:"logos/wp-lab.png"}
 ];
 
 /* ===== CÓDIGO ===== */
@@ -583,7 +586,7 @@ vfundo.addEventListener("click",e=>{if(e.target===vfundo)fecharVideo();});
 $("#serv").innerHTML = servicos.map((s,i)=>`<article class="serv vidro rev"><div class="n">${pad(i+1)}</div><h3>${s.t}</h3><p>${s.d}</p></article>`).join("");
 $("#metricas").innerHTML = metricas.map(m=>`<div class="vidro rev">${contador(m.valor,m.sufixo)}<span>${m.rotulo}</span></div>`).join("");
 $("#res").innerHTML = resultados.map(r=>`<article class="res vidro rev"><b>${r.n}</b><h3>${r.t}</h3><p>${r.d}</p></article>`).join("");
-$("#dep").innerHTML = depoimentos.map(d=>`<figure class="dep vidro rev"><blockquote>“${d.q}”</blockquote><figcaption><cite>${d.nome}</cite><small>${d.emp}</small></figcaption></figure>`).join("");
+$("#dep").innerHTML = depoimentos.map(d=>`<figure class="dep vidro rev"><span class="aspas" aria-hidden="true">“</span><blockquote>${d.q}</blockquote><figcaption><span class="av">${d.logo?`<img src="${M(d.logo)}" alt="Logo ${d.emp}">`:d.emp.charAt(0)}</span><div><cite>${d.emp}${d.nome?`<span style="font-weight:500"> · ${d.nome}</span>`:""}</cite><small>${d.nicho}</small></div></figcaption></figure>`).join("");
 $("#ano").textContent = new Date().getFullYear();
 
 /* Menu sanduíche */
