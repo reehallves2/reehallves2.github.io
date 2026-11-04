@@ -141,6 +141,7 @@ button.foto{font:inherit;text-align:left;cursor:pointer;width:100%}
 .res b{font:900 2rem Montserrat,sans-serif;color:var(--rosa)}
 .dep-g{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .dep-g:has(.dep:only-child){grid-template-columns:minmax(0,680px)}
+@media (min-width:900px){.dep-g:has(.dep:nth-child(3)){grid-template-columns:repeat(3,1fr)}}
 .dep{padding:30px 28px 26px;position:relative;overflow:hidden}
 .dep .aspas{display:block;font:900 5.2rem/.7 Georgia,"Times New Roman",serif;color:var(--rosa);margin-bottom:6px;height:2.6rem}
 .dep blockquote{margin-bottom:20px;font-size:1.05rem;line-height:1.6}
@@ -505,7 +506,8 @@ const resultados = [
 /* Depoimentos */
 const depoimentos = [  /* logo: caminho do logo da marca (ex: "logos/keeta.png"), pode ficar vazio. nicho: ex "beleza" */
   {q:"Lindo Ree, amei tudo. Ficou lindo, parabéns. Dá até gosto a gente fechar parceria com alguém que faz vídeos legal, sabe?", nome:"", emp:"JB Robes Personalizados", nicho:"moda", logo:"logos/jb-robes.png"},
-  {q:"Ficou muito bom! Parabéns, ficou TOP!", nome:"", emp:"WP Lab", nicho:"fitness", logo:"logos/wp-lab.png"}
+  {q:"Ficou muito bom! Parabéns, ficou TOP!", nome:"", emp:"WP Lab", nicho:"fitness", logo:"logos/wp-lab.png"},
+  {q:"Aprovamos, ficou perfeito! Está ótimo como está.", nome:"", emp:"Nice Photos", nicho:"experiência", logo:"logos/nice-photos.png"}
 ];
 
 /* ===== CÓDIGO ===== */
