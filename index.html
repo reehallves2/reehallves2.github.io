@@ -70,6 +70,7 @@ h1 em{font-style:normal;color:var(--rosa)}
 .mini small{font-size:.78rem;opacity:.8}
 .capa-foto{aspect-ratio:3/4;width:100%;max-width:350px;height:auto;justify-self:center}
 .faixa{margin-top:48px;border-block:1px solid var(--borda);padding:20px 0;background:rgba(255,255,255,.5)}
+.faixa-t{text-align:center;font:600 .95rem Poppins,Montserrat,sans-serif;letter-spacing:.02em;margin:0 16px 14px}.faixa-t b{color:var(--rosa);font-weight:800}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .trilho{list-style:none;display:flex;align-items:center;width:max-content;animation:rolar 30s linear infinite}
 .marquee:hover .trilho{animation-play-state:paused}
@@ -241,8 +242,8 @@ section{padding:48px 0}
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#trabalhos">Trabalhos</a></li>
         <li><a href="#fotos">Fotos</a></li>
-        <li><a href="#servicos">Serviços</a></li>
         <li><a href="#numeros">Feedbacks</a></li>
+        <li><a href="#servicos">Serviços</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
@@ -268,7 +269,16 @@ section{padding:48px 0}
       <img class="foto capa-foto" src="fotos/capa.jpg" alt="Renata Alves sorrindo" style="padding:0;object-fit:cover;object-position:center">
     </div>
   </div>
-  <div class="faixa"><div class="marquee" role="region" aria-label="Marcas atendidas"><ul id="marcas" class="trilho"></ul></div></div>
+  <div class="faixa"><p class="faixa-t"><b>+10</b> marcas que já passaram por aqui ✨</p><div class="marquee" role="region" aria-label="Marcas atendidas"><ul id="marcas" class="trilho"></ul></div></div>
+</section>
+
+<!-- 3b. VIDEOS EM DESTAQUE (para trocar: edite a lista "destaques" no script, com o titulo exato do video em trabalhos) -->
+<section id="destaques">
+  <div class="wrap">
+    <h2 class="rev">Vídeos em destaque</h2>
+    <p class="sub rev">Meus trabalhos favoritos para você começar por aqui&nbsp;✨</p>
+    <div class="galeria" id="destGal"></div>
+  </div>
 </section>
 
 <!-- 2. SOBRE -->
@@ -287,15 +297,6 @@ section{padding:48px 0}
         <li class="vidro">Entrega em até 72 horas úteis</li>
       </ul>
     </div>
-  </div>
-</section>
-
-<!-- 3b. VIDEOS EM DESTAQUE (para trocar: edite a lista "destaques" no script, com o titulo exato do video em trabalhos) -->
-<section id="destaques">
-  <div class="wrap">
-    <h2 class="rev">Vídeos em destaque</h2>
-    <p class="sub rev">Meus trabalhos favoritos para você começar por aqui&nbsp;✨</p>
-    <div class="galeria" id="destGal"></div>
   </div>
 </section>
 
@@ -318,15 +319,6 @@ section{padding:48px 0}
   </div>
 </section>
 
-<!-- 5. SERVIÇOS -->
-<section id="servicos">
-  <div class="wrap">
-    <h2 class="rev">Como eu te ajudo</h2>
-    <p class="sub rev">Do vídeo avulso ao pacote mensal, tudo pensado para a sua marca aparecer com verdade.</p>
-    <div class="serv-g" id="serv"></div>
-  </div>
-</section>
-
 <!-- 6. NÚMEROS E DEPOIMENTOS -->
 <!-- Numeros e resultados ficam ocultos (hidden) ate ter dados reais. Para mostrar: tire o hidden dos blocos #metricas e #res abaixo. -->
 <section id="numeros">
@@ -336,6 +328,15 @@ section{padding:48px 0}
     <div class="metricas" id="metricas" hidden></div>
     <div class="res-g" id="res" hidden></div>
     <div class="dep-g" id="dep"></div>
+  </div>
+</section>
+
+<!-- 5. SERVIÇOS -->
+<section id="servicos">
+  <div class="wrap">
+    <h2 class="rev">Como eu te ajudo</h2>
+    <p class="sub rev">Do vídeo avulso ao pacote mensal, tudo pensado para a sua marca aparecer com verdade.</p>
+    <div class="serv-g" id="serv"></div>
   </div>
 </section>
 
