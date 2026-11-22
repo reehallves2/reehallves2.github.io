@@ -483,11 +483,10 @@ const trabalhos = [
   {nicho:"tech", titulo:"Keeta: Delivery de comida", img:"capas/keeta.jpg", video:"keeta.mp4"},
   {nicho:"moda", titulo:"Femine: Joias", img:"capas/femine.jpg", video:"femine.mp4"},
   {nicho:"beleza", titulo:"Pantene: Sérum Leave-in", img:"capas/pantene.jpg", video:"pantene.mp4"},
+  {nicho:"fitness", titulo:"Donna Carioca: Look Fitness", pos:"center top", img:"capas/donna-carioca-2.jpg", video:"donna-carioca-2.mp4"},
   {nicho:"fitness", titulo:"Donna Carioca: Moda Fitness", img:"capas/donna-carioca.jpg", video:"donna-carioca.mp4"},
   {nicho:"fitness", titulo:"Forteviron - Medicamento Homeopático", img:"capas/forteviron.jpg", video:"forteviron.mp4"},
   {nicho:"fitness", titulo:"Whey Protein Growth", img:"capas/fitness.jpg", video:"fitness.mp4"},
-  {nicho:"fitness", titulo:"Vouq: Moda Fitness", img:"capas/roupa-fitness.jpg", video:"roupa-fitness.mp4"},
-  {nicho:"fitness", titulo:"Movie: Moda Fitness", pos:"center top", img:"capas/roupa-fitness-2.jpg", video:"roupa-fitness-2.mp4"},
   {nicho:"fitness", titulo:"Movie: Moda Fitness", img:"capas/roupa-fitness-3.jpg", video:"roupa-fitness-3.mp4"},
   {nicho:"beleza", titulo:"Vizella Cosméticos - Blush", img:"capas/novo-1.jpg", video:"novo-1.mp4"},
   {nicho:"beleza", titulo:"Dove - Antitranspirante Aerosol", img:"capas/novo-3.jpg", video:"novo-3.mp4"},
@@ -579,7 +578,7 @@ gal.addEventListener("click",e=>{const b=e.target.closest(".foto");if(!b)return;
 
 
 /* Videos em destaque: titulos exatos dos videos de "trabalhos" que aparecem na secao */
-const destaques = ["Eudora - lançamento Ultra bond reset","Nicephotos: Fotos reveladas","Keeta: Delivery de comida","Whey Protein Growth"];
+const destaques = ["Donna Carioca: Look Fitness","Eudora - lançamento Ultra bond reset","Nicephotos: Fotos reveladas","Keeta: Delivery de comida"];
 const dg = $("#destGal");
 dg.innerHTML = destaques.map(n=>trabalhos.find(t=>t.titulo===n)).filter(Boolean).map(t=>`
 <button type="button" class="foto pol" data-wide="" data-video="${t.video||""}" data-ig="${t.ig||""}" aria-label="Assistir: ${t.titulo}">
